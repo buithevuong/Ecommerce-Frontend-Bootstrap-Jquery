@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Admin</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/shop-homepage.css" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/fontawesome-free-5.15.3-web/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1 class="text-center">ADMIN PAGE</h1>
+    <div class="row">
+
+
+      <div class="col-md-3">
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Add product
+        </button>
+
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Add Product</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <form action="">
+                 <div class="form-group">
+                  <label>Image :</label>
+                 <input type="file" class="form-control-file border">
+                </div>
+
+
+                <div class="form-group">
+                  <label>Name :</label>
+                  <input type="text" id="addNameProduct" class="form-control form-control">
+                </div>
+
+                <div class="form-group">
+                  <label>Type :</label>
+                  <input type="text" id="addTypeProduct" class="form-control form-control">
+                </div>
+                <div class="form-group">
+                  <label>Description:</label>
+                  <textarea id="addDesProduct" class="form-control" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Color :</label>
+                  <input type="text" id="addColorProduct" class="form-control form-control">
+                </div>
+                <div class="form-group">
+                  <label>Price :</label>
+                  <input type="text" id="addPriceProduct" class="form-control form-control">
+                </div>
+              </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary btn-addProduct">Save changes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-6">
+      
+        <input class="mr-sm-2 input-search" type="search" style="width: 400px" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0 btn-search">Search</button>
+      
+    </div>
+
+    <div class="col-md-3">
+
+      <select class="form-control btn-sort" id="exampleFormControlSelect1">
+        <option value="1">Sort by date</option>
+        <option value="2">Sort by name</option>
+        <option value="3">Sort by price</option>
+
+      </select>
+
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+       <th>Product</th>
+       <th>Image</th>
+       <th>Type</th>
+       <th>Description</th>
+       <th>Color</th>
+       <th>Price</th>
+       <th>Edit</th>
+       <th>Delete</th>
+     </tr>
+   </thead>
+   <tbody class="add-product-admin">
+
+   
+   <tr></tr>
+ </tbody>
+</table>
+
+
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <span class="page-link">Previous</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">2</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+</div>
+
+
+
+
+
+<div class="modal" id="myModalEdit">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Product</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+
+              <div class="form-group">
+                  <input type="hidden" class="form-control form-control editId">
+                </div>
+
+
+              <div class="modal-body">
+                <form action="">
+                 <div class="form-group">
+                  <label>Image :</label>
+                 <input type="file" class="form-control-file border">
+                </div>
+
+
+                <div class="form-group">
+                  <label>Name :</label>
+                  <input type="text" class="form-control form-control editName">
+                </div>
+
+                <div class="form-group">
+                  <label>Type :</label>
+                  <input type="text" class="form-control form-control editType">
+                </div>
+                <div class="form-group">
+                  <label>Description:</label>
+                  <textarea class="form-control editDes" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Color :</label>
+                  <input type="text" class="form-control form-control editColor">
+                </div>
+                <div class="form-group">
+                  <label>Price :</label>
+                  <input type="text" class="form-control form-control editPrice">
+                </div>
+              </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary btn-editProduct">Save changes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.js"></script>
+<!-- <script src="vendor/jquery/jquery-3.6.0.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="js/admin.js"></script>
+</body>
+
+</html>
