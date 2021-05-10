@@ -1,29 +1,13 @@
 
-function getCookie(cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(';');
-  for(var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
 axios.defaults.headers.common['Authorization'] = getCookie("jwtToken");
 /*---------------------------------------------------------------------------------------------------*/
 
-let searchParams = new URLSearchParams(window.location.search);
+let searchParamsCode = new URLSearchParams(window.location.search);
 
-let param = searchParams.get('code');
-
-console.log(param);
+let paramCode = searchParamsCode.get('code');
 
 
-axios.get('http://localhost:8081/api/product/'+param)
+axios.get('http://localhost:8081/api/product/'+paramCode)
 .then(function (response) {
 		$(".productName").text(response.data.productName);
 		$(".productPrice").text(response.data.price);
@@ -39,6 +23,7 @@ axios.get('http://localhost:8081/api/product/'+param)
 .then(function () {
     // always executed
 });
+
 
 
 $(".btn-addtocart").click(function(e) { //xu ly event khi click vao btnchange

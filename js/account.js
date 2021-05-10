@@ -1,9 +1,5 @@
-function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  var expires = "expires="+d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
+
+/*------------------------------------------------------------------------------------------------*/
 
 $(".sign-in").click(function(e) {
         
@@ -42,7 +38,6 @@ $(".sign-up").click(function(e){
 
 $(".registration").click(function(e) {
         
-        console.log($("#regisUsername").val(),$("#regisEmail").val(),$("#regisConfirmPassword").val());
  event.preventDefault();
         axios({
             method: 'post',
@@ -61,3 +56,57 @@ $(".registration").click(function(e) {
         });
 
     });
+
+
+
+
+$(".logout").click(function(e) {
+e.stopPropagation();
+    e.preventDefault();
+  
+axios({
+            method: 'post',
+            url: 'http://localhost:8081/logoutToken',
+            data: {
+                
+                token : getCookie("Token")
+            }
+        })
+        .then(function (response) {
+
+            if(response.data == "" ){
+             setCookie("jwtToken","",0);
+             setCookie("Token","",0);
+             setCookie("user","",0);
+            $(location).attr('href',"index.html");
+
+            }
+        });
+
+});
+
+
+
+
+
+
+
+
+
+/*---------------------------------------------------------------------------------------------------*/
+
+$(document).ready(function() {
+  if(getCookie("user") != ""){
+    
+    $(".myAccount").text(getCookie("user"));
+    $(".accountName").text(getCookie("user"));
+  }
+  else {
+    
+        $(".myAccount").text("Login");
+        $(".myAccount").attr("href", "login.html");
+        $(".logout-li").hide();
+        $(".cart-li").hide();
+
+  }
+});
